@@ -6,13 +6,13 @@ describe(`caesar`,()=>{
     it(`Should encode a string by using the shift value`,()=>{
         const actual = caesar(`abcd`,2);
         const expected = `cdef`;
-        expect(actual).to.equal(expected)
+        expect(actual).to.eql(expected)
     })
     
     it(`Should decode a string by using the shift value`,()=>{
         const actual = caesar(`cdef`,2,false);
         const expected = `abcd`;
-        expect(actual).to.equal(expected)
+        expect(actual).to.eql(expected)
     })
     
     it(`If the shift value is not present, 
@@ -23,13 +23,14 @@ describe(`caesar`,()=>{
 
     it(`Spaces should be maintained throughout, as should other non-alphabetic symbols.`,()=>{
         const actual = caesar(`word with spaces`,1);
-        expect(actual).to.include(" ");
+        const expected = "xpse xjui tqbdft"
+        expect(actual).to.eql(expected);
     })
     
     it(`Capital letters can be ignored.`,()=>{
         const actual = caesar("ALLCAPSMODE",3);
         const expected = "doofdsvprgh";
-        expect(actual).to.equal(expected);
+        expect(actual).to.eql(expected);
     })
 
     it(`If a letter is shifted so that it goes "off" the alphabet 
@@ -38,6 +39,6 @@ describe(`caesar`,()=>{
     (e.g. "z" becomes "c").`,()=>{
         const actual = caesar("wxyz",5);
         const expected = "bcde";
-        expect(actual).to.equal(expected);
+        expect(actual).to.eql(expected);
     })
 })
