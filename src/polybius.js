@@ -33,9 +33,4 @@ if(!encode){
     }
 }
 
-
-console.log(polybius(`231`,false))
-console.log(polybius(`1111`,false))
-console.log(polybius(`12 12 4212`,false))
-
 module.exports = polybius;
