@@ -17,22 +17,25 @@ if(encode){
     return inputArr.join('')
     }
 if(!encode){
-    let inputArr = input.replace(/[ ]+/g,56)
-    if(inputArr.join('').length % 2 !== 0) return false;
-    inputArr = inputArr.match(/\d{1,2}/g);
+    let inputPrep = input.replace(/[ ]+/g,56);
+    if(inputPrep.length % 2 !== 0) return false;
+    let inputArr = inputPrep.match(/\d{1,2}/g);
     for(pair in inputArr){
-        if(inputArr[pair] != " "){
             let cipherLetter = grid.find((letter)=> letter.pos == inputArr[pair]);
-            if(cipherletter === 42){
-            inputArr[pair] = "(i/j)"
+            if(cipherLetter.char === `i` || cipherLetter.char === `j`){
+            inputArr[pair] = `(i/j)`
             }
             else{
             inputArr[pair] = cipherLetter.char
             }
-        }
     }
     return inputArr.join('')
     }
 }
+
+
+console.log(polybius(`231`,false))
+console.log(polybius(`1111`,false))
+console.log(polybius(`12 12 4212`,false))
 
 module.exports = polybius;

@@ -1,8 +1,20 @@
 // Write your tests here!
-const expect = require(`chai`).expect
-const caesar = require (`../src/caesar.js`)
+const expect = require(`chai`).expect;
+const caesar = require (`../src/caesar.js`);
 
 describe(`caesar`,()=>{
+    it(`Should encode a string by using the shift value`,()=>{
+        const actual = caesar(`abcd`,2);
+        const expected = `cdef`;
+        expect(actual).to.equal(expected)
+    })
+    
+    it(`Should decode a string by using the shift value`,()=>{
+        const actual = caesar(`cdef`,2,false);
+        const expected = `abcd`;
+        expect(actual).to.equal(expected)
+    })
+    
     it(`If the shift value is not present, 
     equal to 0, less than -25, or greater than 25, the function should return false.`,()=>{
         const actual = caesar(`word`,99);

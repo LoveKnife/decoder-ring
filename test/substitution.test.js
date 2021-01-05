@@ -3,6 +3,17 @@ const expect = require('chai').expect;
 const substitution = require (`../src/substitution.js`);
 
 describe(`substitution`,()=>{
+    it(`should encode a string by using the substitution alphabet`,()=>{
+        const actual = substitution("thinkful", "xoyqmcgrukswaflnthdjpzibev");
+        const expected = 'jrufscpw'
+    })
+
+    it(`should decode a string by using the substitution alphabet`,()=>{
+        const actual = substitution('jrufscpw', "xoyqmcgrukswaflnthdjpzibev", false);
+        const expected = 'thinkful'
+    })
+
+
     it(`Spaces should be maintained throughout.`,()=>{
         const actual = substitution("s p a c e","xoyqmcgrukswaflnthdjpzibev")
         const expected = "d n x y m"
