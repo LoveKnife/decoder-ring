@@ -18,17 +18,21 @@ if(encode){
     }
 if(!encode){
     let inputArr = input.replace(/[ ]+/g,56)
+    if(inputArr.join('').length % 2 !== 0) return false;
     inputArr = inputArr.match(/\d{1,2}/g);
     for(pair in inputArr){
         if(inputArr[pair] != " "){
             let cipherLetter = grid.find((letter)=> letter.pos == inputArr[pair]);
+            if(cipherletter === 42){
+            inputArr[pair] = "(i/j)"
+            }
+            else{
             inputArr[pair] = cipherLetter.char
+            }
         }
     }
     return inputArr.join('')
     }
 }
-
-console.log(polybius('11 1123',false));
 
 module.exports = polybius;
