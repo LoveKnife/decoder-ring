@@ -5,13 +5,7 @@ let regularAlfa = "abcdefghijklmnopqrstuvwxyz"
 let sortcheck = alphabet.split('').sort().join('');
 if (alphabet.length !== 26 || regularAlfa !== sortcheck) return false; 
 regularAlfa = regularAlfa.split('')
-
-//the input and the alphabet are now an array of characters and spaces
-//check which letter in the regular alphabet matches the checked letter,
-//once found, replace checked letter with the letter on the cipher that shares the index with the regular leter found
-//set the found flag to true to move on to the next letter
-
-if(encode === true){ 
+if(encode){ 
     for(let ltr in inputArr){
     if (inputArr[ltr] !== " "){
         let found 
@@ -25,7 +19,7 @@ if(encode === true){
     }
     }
 }
-if(encode === false){ 
+if(!encode){ 
     for(let ltr in inputArr){
     if (inputArr[ltr] !== " "){ 
         let found 

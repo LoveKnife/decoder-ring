@@ -13,6 +13,4 @@ let inputArr = input.toLowerCase().split(``)
 return inputArr.join('')
 }
 
-console.log(caesar("ALLCAPSMODE",3))
-
 module.exports = caesar;
