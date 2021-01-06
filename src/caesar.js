@@ -9,8 +9,8 @@ function isCharacterALetter(char) {
         if(isCharacterALetter(inputArr[ltr])){
         let currentLetterCode = inputArr[ltr].charCodeAt(0)
         encode ? inputArr[ltr] = String.fromCharCode(currentLetterCode + shift) : inputArr[ltr] = String.fromCharCode(currentLetterCode - shift);
-        if (inputArr[ltr].charCodeAt(0) > 122) inputArr[ltr] = String.fromCharCode(inputArr[ltr].charCodeAt(0) - 26)
-        if (inputArr[ltr].charCodeAt(0) < 97) inputArr[ltr] = String.fromCharCode(inputArr[ltr].charCodeAt(0) + 26)
+        if (inputArr[ltr].charCodeAt(0) > 122) inputArr[ltr] = String.fromCharCode(inputArr[ltr].charCodeAt(0) - 26);
+        if (inputArr[ltr].charCodeAt(0) < 97) inputArr[ltr] = String.fromCharCode(inputArr[ltr].charCodeAt(0) + 26);
         }
     }
 return inputArr.join('')

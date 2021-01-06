@@ -27,7 +27,7 @@ if(!encode){
             inputArr[pair] = `(i/j)`
             }
             else{
-            inputArr[pair] = cipherLetter.char
+            inputArr[pair] = cipherLetter.char;
             }
     }
     return inputArr.join('')

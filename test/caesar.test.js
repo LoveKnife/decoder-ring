@@ -14,11 +14,11 @@ describe(('Caesar Shift'),() => {
     })
     it(('Should return false if input or shift value is missing'), () => {
         const actual = caesar("", )
-        expect(actual).to.be.false
+        expect(actual).to.be.false;
     })
     it(('Should return false if shift value is equal to 0'), () => {
         const actual = caesar("Thinkful", 0)
-        expect(actual).to.be.false
+        expect(actual).to.be.false;
     })
     it(('Should return false if shift value is equal to 25'), () => {
         const expected = false;
