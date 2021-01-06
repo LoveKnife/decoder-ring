@@ -1,44 +1,48 @@
-// Write your tests here!
-const expect = require(`chai`).expect;
-const caesar = require (`../src/caesar.js`);
+const { expect } = require("chai");
+const caesar = require("../src/caesar");
 
-describe(`caesar`,()=>{
-    it(`Should encode a string by using the shift value`,()=>{
-        const actual = caesar(`abcd`,2);
-        const expected = `cdef`;
-        expect(actual).to.eql(expected)
+describe(('Caesar Shift'),() => {
+    it(('Should return an encoded message'), () => {
+        const expected = "wklqnixo";
+        const actual = caesar("Thinkful", 3)
+        expect(actual).to.eql(expected); 
     })
-    
-    it(`Should decode a string by using the shift value`,()=>{
-        const actual = caesar(`cdef`,2,false);
-        const expected = `abcd`;
-        expect(actual).to.eql(expected)
+    it(('Should return a decoded message'), () => {
+        const expected = "thinkful";
+        const actual = caesar("wklqnixo", 3, false)
+        expect(actual).to.eql(expected); 
     })
-    
-    it(`If the shift value is not present, 
-    equal to 0, less than -25, or greater than 25, the function should return false.`,()=>{
-        const actual = caesar(`word`,99);
-        expect(actual).to.be.false;
-    });
-
-    it(`Spaces should be maintained throughout, as should other non-alphabetic symbols.`,()=>{
-        const actual = caesar(`word with spaces`,1);
-        const expected = "xpse xjui tqbdft"
-        expect(actual).to.eql(expected);
+    it(('Should return false if input or shift value is missing'), () => {
+        const actual = caesar("", )
+        expect(actual).to.be.false
     })
-    
-    it(`Capital letters can be ignored.`,()=>{
-        const actual = caesar("ALLCAPSMODE",3);
-        const expected = "doofdsvprgh";
-        expect(actual).to.eql(expected);
+    it(('Should return false if shift value is equal to 0'), () => {
+        const actual = caesar("Thinkful", 0)
+        expect(actual).to.be.false
     })
-
-    it(`If a letter is shifted so that it goes "off" the alphabet 
-    (e.g. a shift of 3 on the letter "z"), 
-    it should wrap around to the front of the alphabet 
-    (e.g. "z" becomes "c").`,()=>{
-        const actual = caesar("wxyz",5);
-        const expected = "bcde";
-        expect(actual).to.eql(expected);
+    it(('Should return false if shift value is equal to 25'), () => {
+        const expected = false;
+        const actual = caesar("Thinkful", 30)
+        expect(actual).to.eql(expected); 
+    })
+    it(('Should return false if shift value is equal to 25'), () => {
+        const expected = false;
+        const actual = caesar("Thinkful", -30)
+        expect(actual).to.eql(expected); 
+    })
+    it(('Spaces, and other non-alphabetic symbols, should be maintained throughout'), () => {
+        const expected = "this is a secret message!";
+        const actual = caesar("BPQA qa I amkzmb umaaiom!", 8, false)
+        expect(actual).to.eql(expected); 
+    })
+    it(('Capital letters can be ignored.'), () => {
+        const expected = "mfuud sjb djfw";
+        const actual = caesar("HAPPY NEW YEAR", 5)
+        expect(actual).to.eql(expected); 
+    })
+    it(('Letters shifted off the alphabet should wrap around'), () => {
+        const expected = "abcde";
+        const actual = caesar("VWXYZ", 5)
+        expect(actual).to.eql(expected); 
     })
 })

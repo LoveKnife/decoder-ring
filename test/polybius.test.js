@@ -1,62 +1,38 @@
-// Write your tests here!
-const expect = require(`chai`).expect;
-const polybius = require(`../src/polybius.js`);
+const { expect } = require("chai");
+const polybius = require("../src/polybius");
 
-describe(`polybius`,()=>{
-    it(`should encode a message by using the cipher table`,()=>{
-        const actual = polybius("thinkful");
+describe(('Polybius Square'),() => {
+    it(('Should return an encoded message'), () => {
         const expected = "4432423352125413";
+        const actual = polybius("thinkful");
         expect(actual).to.eql(expected);
-    })
-    
-    it(`should decode a message by using the cipher table`,()=>{
-        const actual = polybius("3251131343",false);
-        const expected = "hello";
+    });
+    it(('Should return a decoded message'), () => {
+        const expected = "th(i/j)nkful";
+        const actual = polybius("4432423352125413", false);
         expect(actual).to.eql(expected);
-    })
-
-    it(`When encoding, your output should still be a string.`,()=>{
-        const actual = polybius(`word`);
-        expect(actual).to.be.a(`string`);
-    })
-
-    it(`When decoding, the number of characters in the string excluding spaces should be even.
-     Otherwise, return false.`,()=>{
-         const actual = polybius(`231`,false);
-         expect(actual).to.be.false;
-     })
-
-    it('While encoding, spaces should be maintained throughout.',()=>{
-        const actual = polybius(`words with spaces`);
-        const expected =`2543244134 25424432 345311315134`
+    });
+    it(('Should return false if input is missing'), () => {
+        const actual = polybius("", false);
+        expect(actual).to.be.false
+    });
+    it(('Should return false if the string of coordinates is not an even number, ignoring spaces'), () => {
+        const actual = polybius("3251131343 25432413419", false);
+        expect(actual).to.be.false
+    });
+    it(('Spaces should be maintained throughout'), () => {
+        const expected = "hello world";
+        const actual = polybius("3251131343 2543241341", false);
         expect(actual).to.eql(expected);
-     })
-
-    it(`While decoding, spaces should be maintained throuhout.`,()=>{
-         const actual = polybius(`12 12 1212`,false);
-         const expected =`f f ff`
-         expect(actual).to.eql(expected);
-     
-        })
-    
-    it(`Capital letters should be ignored`,()=>{
-        const actual = polybius(`ABCD`);
-        const expected = `11213141`
+    });
+    it(('Capital letter should be ignored'), () => {
+        const expected = "3251131343 2543241341";
+        const actual = polybius("Hello World");
         expect(actual).to.eql(expected);
-    })
-
-    it(`The letters "I" and "J" share a space. When encoding, 
-    both letters can be converted to 42`,()=>{
-        const actual = polybius(`f f if`);
-        const expected =`12 12 4212`
+    });
+    it(('The letters "I" and "J" should be shown together if included'), () => {
+        const expected = "th(i/j)nkful";
+        const actual = polybius("4432423352125413", false);
         expect(actual).to.eql(expected);
-    })
-
-    it(`The letters "I" and "J" share a space. 
-    when decoding, both letters should somehow be shown.`,()=>{
-        const actual = polybius(`12 12 4212`,false);
-        const expected =`f f (i/j)f`
-        expect(actual).to.eql(expected);
-    })
-
-})
+    });
+});

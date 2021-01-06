@@ -6,6 +6,7 @@ const grid = [
         { char: 'q', pos: 14 }, { char: 'r', pos: 24 }, { char: 's', pos: 34 }, { char: 't', pos: 44 }, { char: 'u', pos: 54 },
         { char: 'v', pos: 15 }, { char: 'w', pos: 25 }, { char: 'x', pos: 35 }, { char: 'y', pos: 45 }, { char: 'z', pos: 55 }, {char: ' ', pos: 56},
 ];
+if(!input) return false;
 if(encode){
     let inputArr = input.toLowerCase().split('')
     for(ltr in inputArr){
