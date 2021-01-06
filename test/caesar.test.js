@@ -13,31 +13,31 @@ describe(('Caesar Shift'),() => {
         expect(actual).to.eql(expected); 
     })
     it(('Should return false if input or shift value is missing'), () => {
-        const actual = caesar("", )
+        const actual = caesar("", );
         expect(actual).to.be.false;
     })
     it(('Should return false if shift value is equal to 0'), () => {
-        const actual = caesar("Thinkful", 0)
+        const actual = caesar("Thinkful", 0);
         expect(actual).to.be.false;
     })
     it(('Should return false if shift value is equal to 25'), () => {
         const expected = false;
-        const actual = caesar("Thinkful", 30)
+        const actual = caesar("Thinkful", 30);
         expect(actual).to.eql(expected); 
     })
     it(('Should return false if shift value is equal to 25'), () => {
         const expected = false;
-        const actual = caesar("Thinkful", -30)
+        const actual = caesar("Thinkful", -30);
         expect(actual).to.eql(expected); 
     })
     it(('Spaces, and other non-alphabetic symbols, should be maintained throughout'), () => {
         const expected = "this is a secret message!";
-        const actual = caesar("BPQA qa I amkzmb umaaiom!", 8, false)
+        const actual = caesar("BPQA qa I amkzmb umaaiom!", 8, false);
         expect(actual).to.eql(expected); 
     })
     it(('Capital letters can be ignored.'), () => {
         const expected = "mfuud sjb djfw";
-        const actual = caesar("HAPPY NEW YEAR", 5)
+        const actual = caesar("HAPPY NEW YEAR", 5);
         expect(actual).to.eql(expected); 
     })
     it(('Letters shifted off the alphabet should wrap around'), () => {

@@ -1,9 +1,17 @@
 function substitution(input, alphabet, encode = true){
+if (!alphabet || !input) return false 
 let inputArr = input.toLowerCase().split('');
 let cipherAlpha = alphabet.split(''); 
 let regularAlfa = "abcdefghijklmnopqrstuvwxyz"
-let sortcheck = alphabet.split('').sort().join('');
-if (alphabet.length !== 26 || regularAlfa !== sortcheck) return false; 
+if (alphabet.length !== 26) return false; 
+const uniqueArray = [];
+for (let ltr in alphabet) {
+    if (uniqueArray.indexOf(alphabet[ltr]) < 0) {
+        uniqueArray.push(alphabet[ltr]);
+    } else {
+        return false;
+    }
+}
 regularAlfa = regularAlfa.split('')
 if(encode){ 
     for(let ltr in inputArr){

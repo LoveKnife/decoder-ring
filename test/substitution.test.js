@@ -12,10 +12,20 @@ describe(('Substitution Cipher'), () =>  {
         const actual = substitution("jrufscpw", "xoyqmcgrukswaflnthdjpzibev", false);
         expect(actual).to.eql(expected)
     })
-    it(('Should return false input or alphabet is missing'), () => {
-        const actual = substitution("", "");
-        expect(actual).to.be.false
+    it(('Should return false if input is missing'), () => {
+        const actual = substitution("", "xoyqmcgrukswaflnthdjpzibev");
+        expect(actual).to.be.false;
     });
+    it(('Should return false if alphabet is missing'), () => {
+        const actual = substitution("woo", "");
+        expect(actual).to.be.false;
+    });
+
+    it(('Should allow special characters in the alphabet'), () => {
+        const actual = substitution("what", "!oyqmcgrukswaflnthdjpzibev");
+        expect(actual).to.eql("ir!j")
+    });
+
     it(('Should return false if the alphabet parameter is not a string of exactly 26 characters'), () => {
         const actual = substitution("thinkful", "short");
         expect(actual).to.be.false
